@@ -1,28 +1,40 @@
-This is a Kotlin Multiplatform project targeting Desktop (JVM).
+# 🏗️ job-shop-solver - JSSP Optimization
 
-* [/shared](./shared/src) is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - [commonMain](./shared/src/commonMain/kotlin) is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    the [iosMain](./shared/src/iosMain/kotlin) folder would be the right place for such calls.
-    Similarly, if you want to edit the Desktop (JVM) specific part, the [jvmMain](./shared/src/jvmMain/kotlin)
-    folder is the appropriate location.
+A high-performance scheduling application built with **Compose Multiplatform** and **Kotlin**, designed to solve the complex **Job-Shop Scheduling Problem (JSSP)** using advanced optimization algorithms.
 
-### Running the apps
+![Kotlin](https://img.shields.io/badge/kotlin-%237F52FF.svg?style=for-the-badge&logo=kotlin&logoColor=white)
+![Compose Multiplatform](https://img.shields.io/badge/Compose%20Multiplatform-Desktop-blue?style=for-the-badge)
+![JVM](https://img.shields.io/badge/Platform-JVM%20Desktop-orange?style=for-the-badge)
 
-Use the run configurations provided by the run widget in your IDE's toolbar. You can also use these commands and options:
+## 🎯 Project Objective
 
-- Desktop app:
-  - Hot reload: `./gradlew :desktopApp:hotRun --auto`
-  - Standard run: `./gradlew :desktopApp:run`
+The goal of this application is to find the optimal schedule for multiple jobs across various machines, minimizing the total time (makespan) while adhering to strict operational constraints.
 
-### Running tests
+### The Challenge
+Implement robust solutions for the JSSP, where:
+- **Task Precedence:** No task can start until the previous task of the same job is completed.
+- **Machine Exclusivity:** Each machine can only process one job at a time.
+- **Non-Preemption:** Once a task starts, it cannot be interrupted.
 
-Use the run button in your IDE's editor gutter, or run tests using Gradle tasks:
+## 🧠 The Algorithms
 
-- Desktop tests: `./gradlew :shared:jvmTest`
+The application implements two major strategies for solving the JSSP:
 
----
+### 1. Dynamic Programming
+Breaks the problem into overlapping sub-problems to find optimal substructures, using memoization to avoid redundant calculations.
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+### 2. Branch and Bound
+A state-space search method that systematically explores potential schedules. It uses:
+- **Branching:** Splitting the search space into smaller sub-regions.
+- **Bounding:** Calculating lower bounds to prune branches that cannot lead to a better solution than the current best.
+
+## 🚦 Getting Started
+
+### Prerequisites
+- JDK 17 or higher
+- IntelliJ IDEA (Recommended)
+
+### Running the App
+```bash
+./gradlew :desktopApp:run
+```
