@@ -3,10 +3,6 @@ package mx.tecnm.cdmadero.solver
 import mx.tecnm.cdmadero.model.Job
 import kotlin.math.max
 
-data class JsspSolution(
-    val makespan: Int
-)
-
 object BranchAndBoundSolver {
     private var bestMakespan = Int.MAX_VALUE
 
